@@ -1,0 +1,119 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Source Sans Pro', sans-serif;
+    scroll-behavior: smooth;
+}
+
+
+
+/* ------ HEADER ------ */
+
+header {
+    width: 100vw;
+    height: 100px;
+    background-color: rgb(219, 206, 206);
+    color: #000000;
+    text-align: center;
+    padding-top: 30px;
+}
+
+
+section {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding-top: 4%;
+    width: 100vw;
+    height: 100vh;
+    gap: 40px;
+    background-color: #f4f4f4;
+}
+
+.main-view {
+    background-color: rgb(126, 152, 175);
+    width: 50vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 4%;
+    box-shadow: 0 0.5em 0.5em -0.4em #626060;
+    transform: translateY(-0.15em);
+}
+
+.filters {
+    padding-bottom: 10px;
+    display: flex;
+    gap: 20px;
+}
+
+.status-filter, .order-filter {
+    width: 15vw;
+    padding: 3px;
+    height: 30px;
+    border-radius: 3px;
+    border: none;
+    outline: none;
+}
+
+.todolist {
+    height: 55vh;
+    width: 95%;
+    background-color: rgb(255, 255, 255);
+    padding: 20px;
+    margin-bottom: 15px;
+    border-radius: 10px;
+}
+
+.create-view {
+    background-color: rgb(195, 186, 186);
+    width: 25vw;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 4%;
+    box-shadow: 0 0.5em 0.5em -0.4em #626060;
+    transform: translateY(-0.15em);
+}
+
+h2 {
+    margin: 20px 0px;
+    text-align: center;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;   
+}
+
+
+.form-inputs {
+    display: flex;
+    flex-direction: column;   
+}
+
+.form-title, .form-status {
+    width: 20vw;
+    padding: 3px;
+    margin-top: 5px;
+    margin-bottom: 30px;
+    height: 30px;
+    border-radius: 3px;
+    border: none;
+    outline: none;
+}
+
+.btn-submit {
+    width: 10vw;
+    padding: 5px;
+    margin-top: 30px;
+    align-self: center;
+    height: 30px;
+    border-radius: 3px;
+    border: none;
+
+}

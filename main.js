@@ -5,8 +5,16 @@ function $(elementoDeHtml) {
 window.addEventListener("load", () => {
 
     const $form = $(".form");
-    const $title =  $(".form-title");  
 
+    // inputs
+    const $title =  $(".form-title");  
+    const $status =  $(".form-status");  
+
+  
+    // errors
+    const $titleError =  $(".title-error");  
+    const $statusError =  $(".status-error");
+    const $formError =  $(".form-error");  
 
     $form.addEventListener ('submit', (e) => {
         e.preventDefault()
@@ -16,38 +24,26 @@ window.addEventListener("load", () => {
     
         // Validacion titulo
         if($title.value.length <= 5) { // Si entra en el if hay un error
-
-            
-           // $titleErrors.innerText = "Necesito mas de 5 caracteres"
-            //$titleErrors.style.color = "red";
-            //$titleErrors.style.fontSize = "10px";
+            $titleError.innerText = "Necesito mas de 5 caracteres"
+            $titleError.style.color = "red";
+            $titleError.style.fontSize = "10px";
             errors = true
         } else {
-            $titleErrors.innerText = ""
+            $titleError.innerText = ""
         }
 
 
-        console.log("Errors esta en dspues de validar titulo", errors)
-        console.log($state.value)
-
-        if(errors) {
-            /* no hagas nada */
         // Validacion estado 
-        if($state.value == "") { // Si entra en el if hay un error en estado
-            $stateErrors.innerText = "No seleccionaste ningun estado"
-            $stateErrors.style.color = "red";
-            $stateErrors.style.fontSize = "10px";
+        if($status.value == "") { // Si entra en el if hay un error en estado
+            $statusError.innerText = "No seleccionaste ningun estado"
+            $statusError.style.color = "red";
+            $statusError.style.fontSize = "10px";
             errors = true
         } else {
-            /* Ahora si guardalo o submiteo */
-            $stateErrors.innerText = ""
+            $statusError.innerText = ""
         }
-        console.log("Errors esta en dspues de validar estado", errors)
-        // primer prueba error = true
-
-
-        // errors = false si no hay errores
-        // errors = true, por que si hay errores
+      
+        
 
         if(errors) {
             console.log("AUN TENEMOS ERRORES")
@@ -61,7 +57,7 @@ window.addEventListener("load", () => {
 
 
     
-    })
+    
 
 
 

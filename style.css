@@ -31,6 +31,9 @@ section {
     background-color: #f4f4f4;
 }
 
+/* ------ MAIN VIEW ------ */
+
+
 .main-view {
     background-color: rgb(126, 152, 175);
     width: 50vw;
@@ -49,7 +52,8 @@ section {
     gap: 20px;
 }
 
-.status-filter, .order-filter {
+.status-filter,
+.order-filter {
     width: 15vw;
     padding: 3px;
     height: 30px;
@@ -65,7 +69,34 @@ section {
     padding: 20px;
     margin-bottom: 15px;
     border-radius: 10px;
+    display: flex;
 }
+
+.column-titles {
+    background-color: rgb(44, 99, 117);
+    width: 60%;
+    height: 100%;
+}
+
+.column-status {
+    background-color: rgb(144, 185, 199);
+    width: 20%;
+    height: 100%;
+}
+
+.column-btn {
+    background-color: rgb(72, 170, 203);
+    width: 20%;
+    height: 100%;
+}
+
+
+
+
+
+
+/* ------ CREATE VIEW ------ */
+
 
 .create-view {
     background-color: rgb(195, 186, 186);
@@ -87,16 +118,17 @@ h2 {
 
 .form {
     display: flex;
-    flex-direction: column;   
+    flex-direction: column;
 }
 
 
 .form-inputs {
     display: flex;
-    flex-direction: column;   
+    flex-direction: column;
 }
 
-.form-title, .form-status {
+.form-title,
+.form-status {
     width: 20vw;
     padding: 3px;
     margin-top: 5px;

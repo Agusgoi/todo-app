@@ -1,98 +1,74 @@
-const tareas = [
-    {
-        Titulo: "Practicar JS",
-        Estado: "En progreso"
-    },
-    {
-        Titulo: "TP Ahorradas",
-        Estado: "En progreso"
-    },
-    {
-        Titulo: "TP Generador de Memes",
-        Estado: "Terminado"
-    },
-    {
-        Titulo: "Retomar Memes Programa",
-        Estado: "Pendiente"
-    }
-]
+function $(elementoDeHtml) {
+    return document.querySelector(elementoDeHtml)
+}
 
-// Desafio 2 - OK (modificada en el Desafio 4)
+window.addEventListener("load", () => {
 
-/* const nuevaTarea = (titulo, estado) => {
-    tareas.push ({Titulo: titulo, Estado: estado})
-    return tareas
-} */
+    const $form = $(".form");
+    const $title =  $(".form-title");  
 
 
+    $form.addEventListener ('submit', (e) => {
+        e.preventDefault()
 
-// Desafio 3 - OK (teniendo en cuenta mayus/minus)
 
-const filtrarTareas = (estado) => {
+    let errors = false
     
-    for (let i = 0; i < tareas.length; i++) {
-        if (tareas[i].Estado.toLowerCase() === estado.toLowerCase() ) {
-           console.log ("existe estado")
-            return tareas.filter (tarea => tarea.Estado.toLowerCase()  === estado.toLowerCase())
-        }  
-    }
-    console.log("no coincide estado")
-    return tareas
-}
+        // Validacion titulo
+        if($title.value.length <= 5) { // Si entra en el if hay un error
 
-//console.log (filtrarTareas("pendIEnte"))
-//console.log (filtrarTareas("En PRogreso"))
-//console.log (filtrarTareas("Cualquiera")) 
-
-
-
-// Desafio 4 - OK (teniendo en cuenta mayus/minus)
-
-const nuevaTarea = (titulo, estado) => {
-    for (let i = 0; i < tareas.length; i++) {
-        if (tareas[i].Titulo.toLowerCase() === titulo.toLowerCase() ) {
-            return "ya existe"
-        }  
-    }
-     
-//console.log('agregando') 
-    tareas.push ({Titulo: titulo, Estado: estado})
-    return tareas 
-}
-
-//nuevaTarea ("tp Ahorradas", "Pendiente")
-//nuevaTarea ("PractIcar XX", "Pendiente")
-
-
-
-//  Desafio 5 - OK (teniendo en cuenta mayus/minus)
-
-const existeTarea = (str) => {
-    let tareasExistentes = [];
-    tareas.forEach(tarea => {
-        if (tarea.Titulo.toLowerCase().includes(str.toLowerCase())){
-            tareasExistentes.push (tarea)  
-            //console.log (tareasExistentes)
+            
+           // $titleErrors.innerText = "Necesito mas de 5 caracteres"
+            //$titleErrors.style.color = "red";
+            //$titleErrors.style.fontSize = "10px";
+            errors = true
+        } else {
+            $titleErrors.innerText = ""
         }
-    });
-}
-
-//existeTarea ("Js")
-//existeTarea ("MeMEs")
 
 
-// Extra - funcion que devuelva las tareas ordenadas segun su estado
-let tareasOrdenadas = []  
-const ordenarTareas = () => {
-  
-    tareas.forEach(tarea => {
-        if (tarea.Estado.toLowerCase().includes('pendiente'.toLowerCase())){
-            tareasOrdenadas =+ tareasOrdenadas.push (tarea)  
-            console.log (tareasOrdenadas)
+        console.log("Errors esta en dspues de validar titulo", errors)
+        console.log($state.value)
+
+        if(errors) {
+            /* no hagas nada */
+        // Validacion estado 
+        if($state.value == "") { // Si entra en el if hay un error en estado
+            $stateErrors.innerText = "No seleccionaste ningun estado"
+            $stateErrors.style.color = "red";
+            $stateErrors.style.fontSize = "10px";
+            errors = true
+        } else {
+            /* Ahora si guardalo o submiteo */
+            $stateErrors.innerText = ""
+        }
+        console.log("Errors esta en dspues de validar estado", errors)
+        // primer prueba error = true
+
+
+        // errors = false si no hay errores
+        // errors = true, por que si hay errores
+
+        if(errors) {
+            console.log("AUN TENEMOS ERRORES")
         }
     })
-} 
 
-ordenarTareas()
 
-//return tareas.filter (tarea => tarea.Estado.toLowerCase()  === estado.toLowerCase())
+
+
+
+
+
+    
+    })
+
+
+
+
+
+
+
+
+    //estos cierran la funcion window-load
+})

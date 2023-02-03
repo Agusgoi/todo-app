@@ -24,7 +24,7 @@
             <div class="main-view">
                 <h2>Listado de Tareas</h2>
                 <div class="filters">
-                                        
+
                     <select class="status-filter">
                         <option value="">Selecciona un Estado</option>
                         <option value="">Pendiente</option>
@@ -49,19 +49,24 @@
                 <h2>Nueva Tarea</h2>
                 <form class="form">
                     <div class="form-inputs">
-                    <label for="form-title">Titulo</label>
-                    <input type="text" class="form-title">
-                </div>
-                <div class="form-inputs">
-                    <label for="form-status">Estado</label>
-                    <select class="form-status">
-                        <option value="">Selecciona un Estado</option>
-                        <option value="">Pendiente</option>
-                        <option value="">En progreso</option>
-                        <option value="">Terminado</option>
-                    </select>
-                </div>
+                        <label for="form-title">Titulo</label>
+                        <input type="text" class="form-title">
+                        <p class="title-error"></p>
+                    </div>
+                    <div class="form-inputs">
+                        <label for="form-status">Estado</label>
+                        <select class="form-status">
+                            <option value="">Selecciona un Estado</option>
+                            <option value="">Pendiente</option>
+                            <option value="">En progreso</option>
+                            <option value="">Terminado</option>
+                        </select>
+                        <p class="status-error"></p>
+                    </div>
+                    <div>
                     <button type="submit" class="btn-submit">Agregar</button>
+                    <p class="form-error"></p>
+                </div>
                 </form>
 
             </div>

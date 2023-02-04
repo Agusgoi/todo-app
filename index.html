@@ -49,21 +49,21 @@
                 <h2>Nueva Tarea</h2>
                 <form class="form">
                     <div class="form-inputs">
-                        <label for="form-title">Titulo</label>
+                        <label class="label-form" for="form-title">Titulo</label>
                         <input type="text" class="form-title">
                         <p class="title-error"></p>
                     </div>
                     <div class="form-inputs">
-                        <label for="form-status">Estado</label>
+                        <label class="label-status" for="form-status">Estado</label>
                         <select class="form-status">
-                            <option value="">Selecciona un Estado</option>
-                            <option value="">Pendiente</option>
-                            <option value="">En progreso</option>
-                            <option value="">Terminado</option>
+                            <option value="" disabled selected>Selecciona un Estado</option>
+                            <option value="pending">Pendiente</option>
+                            <option value="in progress">En progreso</option>
+                            <option value="complete">Terminado</option>
                         </select>
                         <p class="status-error"></p>
                     </div>
-                    <div>
+                    <div class="div-btn">
                     <button type="submit" class="btn-submit">Agregar</button>
                     <p class="form-error"></p>
                 </div>

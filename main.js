@@ -17,6 +17,22 @@ window.addEventListener("load", () => {
     const $formError =  $(".form-error");  
 
 
+    const tareas = []; // es necesari0o tener este array aca???
+
+    console.log (tareas)
+    
+    $title.addEventListener("blur", () => {
+        console.log ($title.value)
+    })
+
+
+
+
+
+
+
+
+
 
     //  ------------ OPCION 1 -------------  //
 /* 
@@ -58,58 +74,67 @@ window.addEventListener("load", () => {
 
     let validationErrors = false //Inputs
 
-     /* Expresiones regulares */
-     const regExpAlpha = /^[a-zA-Z0-9-\sñáéíóúüª!:?'¡].{5,20}$/
+     // Expresiones regulares
+     const regExpAlpha = /^[a-zA-Z0-9-\sñáéíóúüª!:?'¡].{4,20}$/
 
-    /* Validacion Inputs */
+    // Validacion Inputs 
     $title.addEventListener("blur", () => {
 
-        /* .trim() pregunto si esta vacio */
         if(!$title.value.trim()) {
-            $titleError.innerText = "El titulo es requerido"
-            $titleError.style.color = '#ff0000'
+            $titleError.innerText = "Campo obligatorio"
+            $titleError.style.color = 'red'
+            $titleError.style.fontSize = '12px'
             validationErrors = true
-        } else if (!regExpAlpha.test($title.value)) { // testeo con la expresion regular
-            $titleError.innerText = "El titulo no es valido, mas de 5 caracteres"
-            $titleError.style.color = '#ff0000'
+        } else if (!regExpAlpha.test($title.value)) { 
+            $titleError.innerText = "Requiere minimo de 5 caracteres"
+            $titleError.style.color = 'red'
+            $titleError.style.fontSize = '12px'
             validationErrors = true
         } else {
-            $titleError.innerText = "El titulo es valido"
+            $titleError.innerText = "Titulo valido"
             $titleError.style.color = 'blue'
+            $titleError.style.fontSize = '12px'
             validationErrors = false
         }
     })
+
+    console.log ($title.value)
 
     $status.addEventListener("blur", () => {
         if(!$status.value.trim()) {
-            $statusError.innerText = "El estado es requerido"
-            $statusError.style.color = '#ff0000'
+            $statusError.innerText = "Campo obligatorio"
+            $statusError.style.color = 'red'
+            $statusError.style.fontSize = '12px'
             validationErrors = true
         } else if (!regExpAlpha.test($state.value)) {
-            $statusError.innerText = "El estado no es valido"
-            $statusError.style.color = '#ff0000'
+            $statusError.innerText = "Seleccion invalida"
+            $statusError.style.color = 'red'
+            $statusError.style.fontSize = '12px'
             validationErrors = true
         } else {
-            $statusError.innerText = "El estado es valido"
+            $statusError.innerText = "Estado valido"
             $statusError.style.color = 'blue'
+            $statusError.style.fontSize = '12px'
             validationErrors = false
         }
     })
-    console.log ($title.target)
+    console.log ($title.value)
+
+
     $form.addEventListener("submit", (event) => {
         event.preventDefault()
 
         let errors = false  //Formulario
 
-        /* Accedo a todos los inputs y buttons del form */
         let elementsForm = $form.elements;
-        
+        console.log(elementsForm)
        
-        for (let i = 1; i < elementsForm.length - 1; i++) {
+        for (let i = 0; i < elementsForm.length - 1; i++) {
             if (elementsForm[i].value == "") {
-                
-                elementsForm[i].style.backgroundColor = 'red'
+                elementsForm[i].style.outline = 'auto'
+                elementsForm[i].style.outlineColor = 'red'
                 $formError.style.color = 'red'
+                $formError.style.fontSize = '12px'
                 $formError.innerText = "Los campos indicados son obligatorios"
                 errors = true
             } else {
@@ -117,11 +142,10 @@ window.addEventListener("load", () => {
             }
         }
         
-        /* Pregunto si hay errores en los inputs o el form en general */
         if(!errors && !validationErrors) {
             tareas.push({Titulo: $title.value, Estado: $estado.value})
             $form.submit()
-            paint()
+            //paint()
         }
     })
 
@@ -145,4 +169,3 @@ window.addEventListener("load", () => {
 
 
 
-"hola".trim()

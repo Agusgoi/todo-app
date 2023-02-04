@@ -132,20 +132,32 @@ h2 {
     width: 20vw;
     padding: 3px;
     margin-top: 5px;
-    margin-bottom: 30px;
+    margin-bottom: 2px;
     height: 30px;
     border-radius: 3px;
     border: none;
     outline: none;
+    
+}
+
+.label-status {
+    margin-top: 30px;
 }
 
 .btn-submit {
     width: 10vw;
     padding: 5px;
-    margin-top: 30px;
-    align-self: center;
+    margin-top: 60px;
+    margin-bottom: 2px;
     height: 30px;
     border-radius: 3px;
     border: none;
 
+}
+
+.div-btn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
 }

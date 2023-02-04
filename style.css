@@ -101,7 +101,7 @@ section {
 .create-view {
     background-color: rgb(195, 186, 186);
     width: 25vw;
-    padding: 20px;
+    padding: 0px 20px 20px 20px;
     display: flex;
     flex-direction: column;
     justify-content: center;

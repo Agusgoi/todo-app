@@ -5,21 +5,30 @@ function $(elementoDeHtml) {
 window.addEventListener("load", () => {
   const $form = $(".form");
 
-  // inputs
+  // List Columns
+  const $titleColumn = $(".column-titles");
+  const $statusColumn = $(".column-status");
+  const $btnColumn = $(".column-btn");
+
+  const $toDoList = $(".todolist");
+
+  // Inputs
   const $title = $(".form-title");
   const $status = $(".form-status");
 
-  // errors
+  // Errors
   const $titleError = $(".title-error");
   const $statusError = $(".status-error");
   const $formError = $(".form-error");
 
-  // Expresiones regulares
+  // Regex
   const regExpAlpha = /^[a-zA-Z0-9-\sñáéíóúüª!:?'¡].{4,20}$/;
 
-  const tareas = []; // es necesari0o tener este array aca???
+  const tareas = [];
 
 
+
+//  ------------ Functions -------------  //
 
 
   // Clear Inputs
@@ -29,21 +38,31 @@ window.addEventListener("load", () => {
     $status.value = "";
     $titleError.innerText = "";
     $statusError.innerText = "";
+    $formError.innerText = "";
+    $title.style.outline = "none";
+    $status.style.outline = "none";
+  };
+
+  // Paint Tareas array in columns
+
+  const paint = (array) => {
+    $titleColumn.innerHTML = "";
+    $statusColumn.innerHTML = "";
+    $btnColumn.innerHTML = "";
+    array.forEach((element) => {
+      $titleColumn.innerHTML += `<p>${element.Titulo}</p>`;
+      $statusColumn.innerHTML += `<p>${element.Estado}</p>`;
+      $btnColumn.innerHTML += `<button class="btn-edit" id=${element.id}>Editar</button>
+<button class="btn-delete" id=${element.id}>Eliminar</button>`;
+    });
   };
 
 
-  const paint = ()=> {
-    
-  }
+  //  ------------ Inputs & Form Validation -------------  //
 
-
-
-
-  //  ------------ Validacion de Inputs y Formulario -------------  //
-
-  let validationErrors = false; //Inputs
-
-  // Validacion Inputs
+  // Inputs Validation
+  let validationErrors = false;
+ 
   $title.addEventListener("blur", () => {
     if (!$title.value.trim()) {
       $titleError.innerText = "Campo obligatorio";
@@ -63,8 +82,6 @@ window.addEventListener("load", () => {
     }
   });
 
-  console.log($title.value);
-
   $status.addEventListener("blur", () => {
     if (!$status.value.trim()) {
       $statusError.innerText = "Campo obligatorio";
@@ -83,14 +100,12 @@ window.addEventListener("load", () => {
       validationErrors = false;
     }
   });
-  console.log($title.value);
 
-
-
+  // Form Validation
   $form.addEventListener("submit", (event) => {
     event.preventDefault();
 
-    let errors = false; //Formulario
+    let errors = false; 
     let elementsForm = $form.elements;
 
     for (let i = 0; i < elementsForm.length - 1; i++) {
@@ -107,11 +122,22 @@ window.addEventListener("load", () => {
     }
 
     if (!errors && !validationErrors) {
-      tareas.push({ Titulo: $title.value, Estado: $status.value });
-      console.log(tareas);
-      clearInputs();
-      //$form.submit()
-      //paint()
+      if (tareas == "") {
+        tareas.push({ id: 1, Titulo: $title.value, Estado: $status.value });
+        console.log(tareas);
+        paint(tareas);
+        clearInputs();
+      } else {
+        tareas.push({
+          id: tareas[tareas.length - 1].id + 1,
+          Titulo: $title.value,
+          Estado: $status.value,
+        });
+        console.log(tareas);
+        paint(tareas);
+        clearInputs();
+        //$form.submit()
+      }
     }
   });
 

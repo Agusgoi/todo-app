@@ -46,6 +46,9 @@
                 </div>
             </div>
 
+          
+           
+
             <div class="create-view">
                 <h2>Nueva Tarea</h2>
                 <form class="form">
@@ -64,17 +67,43 @@
                         </select>
                         <p class="status-error"></p>
                     </div>
-                    <!-- 
-                    <div>
-                        <input type="date" class="date">
-                    </div> 
-                    -->
+                
                     <div class="div-btn">
                     <button type="submit" class="btn-submit">Agregar</button>
                     <p class="form-error"></p>
                 </div>
                 </form>
 
+            </div>
+
+
+            <div class="contain-modal">
+                <div class="modal">
+                    <button class="close-modal">X</button>
+                    <h2>Editar Tarea</h2>
+                    <form class="form-edit">
+                        <div class="form-inputs">
+                            <label class="label-form" for="form-title">Titulo</label>
+                            <input type="text" class="form-title">
+                            <p class="title-error"></p>
+                        </div>
+                        <div class="form-inputs">
+                            <label class="label-status" for="form-status">Estado</label>
+                            <select class="form-status">
+                                <option value="" disabled selected>Selecciona un Estado</option>
+                                <option value="Pendiente">Pendiente</option>
+                                <option value="En progreso">En progreso</option>
+                                <option value="Completo">Completo</option>
+                            </select>
+                            <p class="status-error"></p>
+                        </div>
+                    
+                        <div class="div-btn">
+                        <button type="submit" class="btn-submit">Agregar</button>
+                        <p class="form-error"></p>
+                    </div>
+                    </form>
+                </div>
             </div>
 
         </section>

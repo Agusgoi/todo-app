@@ -4,6 +4,7 @@ function $(elementoDeHtml) {
 
 window.addEventListener("load", () => {
   const $form = $(".form");
+  let tareas = [];
 
   // List Columns
   const $dateColumn = $(".column-date");
@@ -11,13 +12,18 @@ window.addEventListener("load", () => {
   const $statusColumn = $(".column-status");
   const $btnColumn = $(".column-btn");
 
-  const $toDoList = $(".todolist");
+
+ const $containModal = $(".contain-modal");
+
+
+
+  // const $toDoList = $(".todolist"); -----------eliminar?
 
   // Inputs
   const $title = $(".form-title");
   const $status = $(".form-status");
- // const $date = $(".date"); eliminar?
-
+  const $statusFilter = $(".status-filter");
+  const $statusOrder = $(".status-order");
 
   // Errors
   const $titleError = $(".title-error");
@@ -32,7 +38,8 @@ window.addEventListener("load", () => {
   const fecha = [date.getDate(), date.getMonth()+1, date.getFullYear()];
   const formatDate = fecha.join('/')
 
-  let tareas = [];
+  // Buttons
+  const $btnCloseModal = $(".close-modal");
 
 
 
@@ -81,20 +88,30 @@ window.addEventListener("load", () => {
            paint(tareas)
        })
    })
-  };
 
  // Edit
 
-   $btnEditTarea = document.querySelectorAll(".btn-edit")
-   $btnEditTarea.forEach(button => {
-       button.addEventListener("click", (event) => {
-           //$modalEdit.classList.add("show-modalEdit") ---------------CREAR MODAL
-           const tareaAEditar = tareas.find(tarea => tarea.id === Number(event.target.id))
-           $stateEdit.value = tareaAEditar.Estado
-           $titleEdit.value = tareaAEditar.Titulo
-       })
-   })
- 
+/*  $btnEditTarea = document.querySelectorAll(".btn-edit")
+ $btnEditTarea.forEach(button => {
+     button.addEventListener("click", (event) => {
+         //$modalEdit.classList.add("show-modalEdit") ---------------CREAR MODAL
+         const EditToDo = tareas.find(tarea => tarea.id === Number(event.target.id))
+         $statusEdit.value = EditToDo.Estado
+         $titleEdit.value = EditToDo.Titulo
+     })
+ }) */
+
+
+  };
+
+
+// Eventos MODAL
+
+ /*   $btnCloseModal.addEventListener("click", () => {
+    console.log($btnCloseModal)
+    //$containModal.style.display = 'none'
+})
+ */
 
 /* 
     /* Eventos Modal
@@ -113,7 +130,61 @@ window.addEventListener("load", () => {
 
 
 
-  
+
+
+// Filters
+
+// Filter per Status
+
+$statusFilter.addEventListener('input', () =>{
+  let toDoFiltered = [];
+
+  if ($statusFilter.value === 'Pendiente') {
+    tareas.forEach(tarea => {
+      if (tarea.Estado === 'Pendiente') {
+          toDoFiltered.push (tarea) 
+          paint(toDoFiltered)
+  }
+})
+  }else if($statusFilter.value === 'En progreso') {
+    tareas.forEach(tarea => {
+      if (tarea.Estado === 'En progreso') {
+          toDoFiltered.push (tarea) 
+          paint(toDoFiltered)
+
+  }
+})
+}else if($statusFilter.value === 'Completo') {
+    tareas.forEach(tarea => {
+      if (tarea.Estado === 'Completo') {
+          toDoFiltered.push (tarea) 
+          paint(toDoFiltered)
+
+        }
+      })
+      }
+    })
+
+    // Order per Status
+
+    $statusOrder.addEventListener('input', () =>{
+      let orderPerStatus = [];
+
+      if ($statusOrder.value === 'por estado') {
+        tareas.forEach(tarea => {
+
+
+
+
+
+
+
+
+
+
+
+
+
 
   //  ------------ Inputs & Form Validation -------------  //
 

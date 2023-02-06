@@ -26,16 +26,17 @@
                 <div class="filters">
 
                     <select class="status-filter">
-                        <option value="">Selecciona un Estado</option>
-                        <option value="">Pendiente</option>
-                        <option value="">En progreso</option>
-                        <option value="">Terminado</option>
+                        <option value="" disabled selected>Selecciona un Estado</option>
+                        <option value="Pendiente">Pendiente</option>
+                        <option value="En progreso">En progreso</option>
+                        <option value="Completo">Completo</option>
                     </select>
                     <select class="order-filter">
-                        <option value="">Ordenar por</option>
-                        <option value="">Estado</option>
-                        <option value="">Fecha en que se agrego</option>
+                        <option value="" disabled selected>Ordenar por</option>
+                        <option value="por estado">Estado</option>
+                        <option value="por fecha">Fecha en que se agrego</option>
                     </select>
+                    <button class="clear-filters">Mostrar todo</button>
 
                 </div>
                 <div class="todolist">
@@ -46,8 +47,8 @@
                 </div>
             </div>
 
-          
-           
+
+
 
             <div class="create-view">
                 <h2>Nueva Tarea</h2>
@@ -67,16 +68,16 @@
                         </select>
                         <p class="status-error"></p>
                     </div>
-                
+
                     <div class="div-btn">
-                    <button type="submit" class="btn-submit">Agregar</button>
-                    <p class="form-error"></p>
-                </div>
+                        <button type="submit" class="btn-submit">Agregar</button>
+                        <p class="form-error"></p>
+                    </div>
                 </form>
 
             </div>
 
-
+<!-- 
             <div class="contain-modal">
                 <div class="modal">
                     <button class="close-modal">X</button>
@@ -97,15 +98,15 @@
                             </select>
                             <p class="status-error"></p>
                         </div>
-                    
+
                         <div class="div-btn">
-                        <button type="submit" class="btn-submit">Agregar</button>
-                        <p class="form-error"></p>
-                    </div>
+                            <button type="submit" class="btn-submit">Agregar</button>
+                            <p class="form-error"></p>
+                        </div>
                     </form>
                 </div>
             </div>
-
+ -->
         </section>
     </main>
     <footer></footer>

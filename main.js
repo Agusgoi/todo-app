@@ -6,6 +6,7 @@ window.addEventListener("load", () => {
   const $form = $(".form");
 
   // List Columns
+  const $dateColumn = $(".column-date");
   const $titleColumn = $(".column-titles");
   const $statusColumn = $(".column-status");
   const $btnColumn = $(".column-btn");
@@ -15,6 +16,8 @@ window.addEventListener("load", () => {
   // Inputs
   const $title = $(".form-title");
   const $status = $(".form-status");
+ // const $date = $(".date"); eliminar?
+
 
   // Errors
   const $titleError = $(".title-error");
@@ -24,7 +27,12 @@ window.addEventListener("load", () => {
   // Regex
   const regExpAlpha = /^[a-zA-Z0-9-\sñáéíóúüª!:?'¡].{4,20}$/;
 
-  const tareas = [];
+   // Date
+  const date = new Date();
+  const fecha = [date.getDate(), date.getMonth()+1, date.getFullYear()];
+  const formatDate = fecha.join('/')
+
+  let tareas = [];
 
 
 
@@ -41,29 +49,78 @@ window.addEventListener("load", () => {
     $formError.innerText = "";
     $title.style.outline = "none";
     $status.style.outline = "none";
+    
   };
 
-  // Paint Tareas array in columns
+ //  ------------ PAINT + Edit & Delete buttons -------------  //
+
+  // Paint
 
   const paint = (array) => {
+    $dateColumn.innerHTML = "";
     $titleColumn.innerHTML = "";
     $statusColumn.innerHTML = "";
     $btnColumn.innerHTML = "";
     array.forEach((element) => {
+      $dateColumn.innerHTML += `<p>${formatDate}</p>`; // llamando directo a la variable funciono, pero no logre guardar la fecha en todos los objetos, solo en el primero
       $titleColumn.innerHTML += `<p>${element.Titulo}</p>`;
       $statusColumn.innerHTML += `<p>${element.Estado}</p>`;
       $btnColumn.innerHTML += `<button class="btn-edit" id=${element.id}>Editar</button>
 <button class="btn-delete" id=${element.id}>Eliminar</button>`;
     });
+
+
+
+  // Delete
+
+   $btnDeleteTarea = document.querySelectorAll(".btn-delete")
+   console.log ($btnDeleteTarea)
+   $btnDeleteTarea.forEach(button => {
+       button.addEventListener("click", (event) => {
+          tareas = tareas.filter(tarea => tarea.id !== Number(event.target.id))
+           paint(tareas)
+       })
+   })
   };
 
+ // Edit
+
+   $btnEditTarea = document.querySelectorAll(".btn-edit")
+   $btnEditTarea.forEach(button => {
+       button.addEventListener("click", (event) => {
+           //$modalEdit.classList.add("show-modalEdit") ---------------CREAR MODAL
+           const tareaAEditar = tareas.find(tarea => tarea.id === Number(event.target.id))
+           $stateEdit.value = tareaAEditar.Estado
+           $titleEdit.value = tareaAEditar.Titulo
+       })
+   })
+ 
+
+/* 
+    /* Eventos Modal
+    $openModal.addEventListener("click", () => {
+      $modalCreate.classList.add("show-modalCreate")
+  })
+
+  $closeModalCreate.addEventListener("click", () => {
+      $modalCreate.classList.remove("show-modalCreate")
+  })
+
+  $closeModalEdit.addEventListener("click", () => {
+      $modalEdit.classList.remove("show-modalEdit")
+  })
+ */
+
+
+
+  
 
   //  ------------ Inputs & Form Validation -------------  //
 
   // Inputs Validation
   let validationErrors = false;
  
-  $title.addEventListener("blur", () => {
+  $title.addEventListener("input", (event) => {
     if (!$title.value.trim()) {
       $titleError.innerText = "Campo obligatorio";
       $titleError.style.color = "red";
@@ -82,7 +139,7 @@ window.addEventListener("load", () => {
     }
   });
 
-  $status.addEventListener("blur", () => {
+  $status.addEventListener("input", () => {
     if (!$status.value.trim()) {
       $statusError.innerText = "Campo obligatorio";
       $statusError.style.color = "red";
@@ -108,7 +165,7 @@ window.addEventListener("load", () => {
     let errors = false; 
     let elementsForm = $form.elements;
 
-    for (let i = 0; i < elementsForm.length - 1; i++) {
+    for (let i = 0; i < elementsForm.length - 2; i++) {
       if (elementsForm[i].value == "") {
         elementsForm[i].style.outline = "auto";
         elementsForm[i].style.outlineColor = "red";
@@ -123,7 +180,7 @@ window.addEventListener("load", () => {
 
     if (!errors && !validationErrors) {
       if (tareas == "") {
-        tareas.push({ id: 1, Titulo: $title.value, Estado: $status.value });
+        tareas.push({id: 1, FechaCreacion: formatDate, Titulo: $title.value, Estado: $status.value }); // la key de fecha solo se guarda en el primer objeto, en los demas No, por que?
         console.log(tareas);
         paint(tareas);
         clearInputs();
@@ -140,6 +197,11 @@ window.addEventListener("load", () => {
       }
     }
   });
+
+ 
+
+
+
 
   //estos cierran la funcion window-load
 });

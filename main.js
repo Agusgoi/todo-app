@@ -12,10 +12,7 @@ window.addEventListener("load", () => {
   const $statusColumn = $(".column-status");
   const $btnColumn = $(".column-btn");
 
-
- const $containModal = $(".contain-modal");
-
-
+  const $containModal = $(".contain-modal");
 
   // const $toDoList = $(".todolist"); -----------eliminar?
 
@@ -23,7 +20,7 @@ window.addEventListener("load", () => {
   const $title = $(".form-title");
   const $status = $(".form-status");
   const $statusFilter = $(".status-filter");
-  const $statusOrder = $(".status-order");
+  const $statusOrder = $(".order-filter");
 
   // Errors
   const $titleError = $(".title-error");
@@ -33,18 +30,15 @@ window.addEventListener("load", () => {
   // Regex
   const regExpAlpha = /^[a-zA-Z0-9-\sñáéíóúüª!:?'¡].{4,20}$/;
 
-   // Date
+  // Date
   const date = new Date();
-  const fecha = [date.getDate(), date.getMonth()+1, date.getFullYear()];
-  const formatDate = fecha.join('/')
+  const fecha = [date.getDate(), date.getMonth() + 1, date.getFullYear()];
+  const formatDate = fecha.join("/");
 
   // Buttons
   const $btnCloseModal = $(".close-modal");
 
-
-
-//  ------------ Functions -------------  //
-
+  //  ------------ Functions -------------  //
 
   // Clear Inputs
 
@@ -56,10 +50,9 @@ window.addEventListener("load", () => {
     $formError.innerText = "";
     $title.style.outline = "none";
     $status.style.outline = "none";
-    
   };
 
- //  ------------ PAINT + Edit & Delete buttons -------------  //
+  //  ------------ PAINT + Edit & Delete buttons -------------  //
 
   // Paint
 
@@ -76,22 +69,20 @@ window.addEventListener("load", () => {
 <button class="btn-delete" id=${element.id}>Eliminar</button>`;
     });
 
+    // Delete
 
+    $btnDeleteTarea = document.querySelectorAll(".btn-delete");
+    console.log($btnDeleteTarea);
+    $btnDeleteTarea.forEach((button) => {
+      button.addEventListener("click", (event) => {
+        tareas = tareas.filter((tarea) => tarea.id !== Number(event.target.id));
+        paint(tareas);
+      });
+    });
 
-  // Delete
+    // Edit
 
-   $btnDeleteTarea = document.querySelectorAll(".btn-delete")
-   console.log ($btnDeleteTarea)
-   $btnDeleteTarea.forEach(button => {
-       button.addEventListener("click", (event) => {
-          tareas = tareas.filter(tarea => tarea.id !== Number(event.target.id))
-           paint(tareas)
-       })
-   })
-
- // Edit
-
-/*  $btnEditTarea = document.querySelectorAll(".btn-edit")
+    /*  $btnEditTarea = document.querySelectorAll(".btn-edit")
  $btnEditTarea.forEach(button => {
      button.addEventListener("click", (event) => {
          //$modalEdit.classList.add("show-modalEdit") ---------------CREAR MODAL
@@ -100,20 +91,17 @@ window.addEventListener("load", () => {
          $titleEdit.value = EditToDo.Titulo
      })
  }) */
-
-
   };
 
+  // Eventos MODAL
 
-// Eventos MODAL
-
- /*   $btnCloseModal.addEventListener("click", () => {
+  /*   $btnCloseModal.addEventListener("click", () => {
     console.log($btnCloseModal)
     //$containModal.style.display = 'none'
 })
  */
 
-/* 
+  /* 
     /* Eventos Modal
     $openModal.addEventListener("click", () => {
       $modalCreate.classList.add("show-modalCreate")
@@ -128,69 +116,67 @@ window.addEventListener("load", () => {
   })
  */
 
+  // Filters
 
+  // Filter per Status
 
+  $statusFilter.addEventListener("input", () => {
+    let toDoFiltered = [];
 
-
-// Filters
-
-// Filter per Status
-
-$statusFilter.addEventListener('input', () =>{
-  let toDoFiltered = [];
-
-  if ($statusFilter.value === 'Pendiente') {
-    tareas.forEach(tarea => {
-      if (tarea.Estado === 'Pendiente') {
-          toDoFiltered.push (tarea) 
-          paint(toDoFiltered)
-  }
-})
-  }else if($statusFilter.value === 'En progreso') {
-    tareas.forEach(tarea => {
-      if (tarea.Estado === 'En progreso') {
-          toDoFiltered.push (tarea) 
-          paint(toDoFiltered)
-
-  }
-})
-}else if($statusFilter.value === 'Completo') {
-    tareas.forEach(tarea => {
-      if (tarea.Estado === 'Completo') {
-          toDoFiltered.push (tarea) 
-          paint(toDoFiltered)
-
+    if ($statusFilter.value === "Pendiente") {
+      tareas.forEach((tarea) => {
+        if (tarea.Estado === "Pendiente") {
+          toDoFiltered.push(tarea);
+          paint(toDoFiltered);
         }
-      })
-      }
-    })
+      });
+    } else if ($statusFilter.value === "En progreso") {
+      tareas.forEach((tarea) => {
+        if (tarea.Estado === "En progreso") {
+          toDoFiltered.push(tarea);
+          paint(toDoFiltered);
+        }
+      });
+    } else if ($statusFilter.value === "Completo") {
+      tareas.forEach((tarea) => {
+        if (tarea.Estado === "Completo") {
+          toDoFiltered.push(tarea);
+          paint(toDoFiltered);
+        }
+      });
+    }
+  });
 
-    // Order per Status
+  // Order per Status
 
-    $statusOrder.addEventListener('input', () =>{
-      let orderPerStatus = [];
-
-      if ($statusOrder.value === 'por estado') {
-        tareas.forEach(tarea => {
-
-
-
-
-
-
-
-
-
-
-
-
-
+  $statusOrder.addEventListener("input", () => {
+    let orderPerStatus = [];
+    if ($statusOrder.value === "por estado") {
+      tareas.forEach((tarea) => {
+        if (tarea.Estado === "Pendiente") {
+          orderPerStatus.push(tarea);
+        }
+      });
+      tareas.forEach((tarea) => {
+        if (tarea.Estado === "En progreso") {
+          orderPerStatus.push(tarea);
+        }
+      });
+      tareas.forEach((tarea) => {
+        if (tarea.Estado === "Completo") {
+          orderPerStatus.push(tarea);
+        }
+      });
+    }
+    paint(orderPerStatus);
+    console.log(orderPerStatus);
+  });
 
   //  ------------ Inputs & Form Validation -------------  //
 
   // Inputs Validation
   let validationErrors = false;
- 
+
   $title.addEventListener("input", (event) => {
     if (!$title.value.trim()) {
       $titleError.innerText = "Campo obligatorio";
@@ -233,7 +219,7 @@ $statusFilter.addEventListener('input', () =>{
   $form.addEventListener("submit", (event) => {
     event.preventDefault();
 
-    let errors = false; 
+    let errors = false;
     let elementsForm = $form.elements;
 
     for (let i = 0; i < elementsForm.length - 2; i++) {
@@ -251,7 +237,12 @@ $statusFilter.addEventListener('input', () =>{
 
     if (!errors && !validationErrors) {
       if (tareas == "") {
-        tareas.push({id: 1, FechaCreacion: formatDate, Titulo: $title.value, Estado: $status.value }); // la key de fecha solo se guarda en el primer objeto, en los demas No, por que?
+        tareas.push({
+          id: 1,
+          FechaCreacion: formatDate,
+          Titulo: $title.value,
+          Estado: $status.value,
+        }); // la key de fecha solo se guarda en el primer objeto, en los demas No, por que?
         console.log(tareas);
         paint(tareas);
         clearInputs();
@@ -268,11 +259,6 @@ $statusFilter.addEventListener('input', () =>{
       }
     }
   });
-
- 
-
-
-
 
   //estos cierran la funcion window-load
 });

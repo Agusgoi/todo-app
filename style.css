@@ -7,6 +7,27 @@
 }
 
 
+/* ------ DARK MODE ------ */
+
+.darkmode,
+.darkmode header,
+.darkmode .create-view,
+.darkmode .main-view {
+    background-color: #3d4252;
+    color: white;
+
+}
+
+.darkmode section,
+.darkmode input,
+.darkmode select,
+.darkmode button,
+.darkmode .todolist {
+    background-color: #1a1c23;
+    color: white;
+
+}
+
 
 /* ------ HEADER ------ */
 
@@ -15,9 +36,24 @@ header {
     height: 100px;
     background-color: rgb(219, 206, 206);
     color: #000000;
-    text-align: center;
     padding-top: 30px;
+    display: flex;
+    justify-content: center
 }
+
+.btn-mode {
+    position: fixed;
+    top: 0;
+    left: 0;
+    margin-left: 40px;
+    margin-top: 40px;
+    padding: 5px;
+    height: 30px;
+    border-radius: 3px;
+    border: none;
+}
+
+
 
 
 section {
@@ -81,34 +117,74 @@ section {
 }
 
 .column-date {
-    background-color: rgb(174, 186, 190);
     width: 10%;
     height: 100%;
+    font-size: 13px;
 }
 
 .column-titles {
-    background-color: rgb(44, 99, 117);
-    width: 60%;
+    width: 55%;
     height: 100%;
+    font-size: 13px;
 }
 
 .column-status {
-    background-color: rgb(144, 185, 199);
     width: 15%;
     height: 100%;
+    font-size: 13px;
     text-align: center;
 }
 
 .column-btn {
-    background-color: rgb(72, 170, 203);
-    width: 15%;
+    width: 20%;
     height: 100%;
+    font-size: 13px;
     text-align: center;
 }
 
+h3 {
+    font-size: 15px;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
 
+.pending-status {
+    color: red;
+    font-weight: 600;
+    padding: 5px;
+}
 
+.inprogress-status {
+    color: orange;
+    font-weight: 600;
+    padding: 5px;
+}
 
+.complete-status {
+    color: green;
+    font-weight: 600;
+    padding: 5px;
+}
+
+.list-text {
+    padding: 5px;
+}
+
+.btn-delete {
+    border: none;
+    border-radius: 5%;
+    background-color: rgba(236, 66, 66, 0.556);
+    padding: 5px;
+
+}
+
+.btn-edit {
+    border: none;
+    border-radius: 5%;
+    background-color: rgba(74, 132, 183, 0.682);
+    padding: 5px;
+
+}
 
 
 /* ------ CREATE VIEW ------ */
@@ -144,7 +220,7 @@ h2 {
 }
 
 .form-title,
-.form-status {
+.form-status, .edit-status, .edit-title {
     width: 20vw;
     padding: 3px;
     margin-top: 5px;
@@ -160,7 +236,7 @@ h2 {
     margin-top: 30px;
 }
 
-.btn-submit{
+.btn-submit {
     width: 10vw;
     padding: 5px;
     margin-top: 60px;
@@ -181,6 +257,9 @@ h2 {
     display: none;
 }
 
+
+/* ------ MODAL ------ */
+
 .contain-modal {
     height: 100vh;
     width: 100vw;
@@ -188,7 +267,7 @@ h2 {
     background-color: rgba(0, 0, 0, 0.775);
     top: 0;
     opacity: 100%;
-    pointer-events: none;
+   /* pointer-events: none;*/
     display: flex;
     justify-content: center;
     align-items: center;

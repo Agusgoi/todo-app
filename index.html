@@ -13,6 +13,9 @@
     <!-- Header -->
 
     <header>
+        <button class="btn-mode">
+            <span>Modo Oscuro</span>
+        </button>
         <h1>TAREAS</h1>
     </header>
 
@@ -20,6 +23,10 @@
 
 
     <main>
+
+
+
+
         <section>
             <div class="main-view">
                 <h2>Listado de Tareas</h2>
@@ -34,16 +41,24 @@
                     <select class="order-filter">
                         <option value="" disabled selected>Ordenar por</option>
                         <option value="por estado">Estado</option>
-                        <option value="por fecha">Fecha en que se agrego</option>
+                        <option value="por fecha">Fecha - mas reciente</option>
                     </select>
-                    <button class="clear-filters">Mostrar todo</button>
+                    <button class="clear-filters">Desfiltrar</button>
 
                 </div>
                 <div class="todolist">
-                    <div class="column-date"></div>
-                    <div class="column-titles"></div>
-                    <div class="column-status"></div>
-                    <div class="column-btn"></div>
+                    <div class="column-date">
+                        <h3>Fecha</h3>
+                    </div>
+                    <div class="column-titles">
+                        <h3>Titulo</h3>
+                    </div>
+                    <div class="column-status">
+                        <h3>Estado</h3>
+                    </div>
+                    <div class="column-btn">
+                        <h3>Acciones</h3>
+                    </div>
                 </div>
             </div>
 
@@ -77,7 +92,12 @@
 
             </div>
 
-<!-- 
+ 
+        
+ 
+        </section>
+
+        <section>
             <div class="contain-modal">
                 <div class="modal">
                     <button class="close-modal">X</button>
@@ -85,12 +105,12 @@
                     <form class="form-edit">
                         <div class="form-inputs">
                             <label class="label-form" for="form-title">Titulo</label>
-                            <input type="text" class="form-title">
+                            <input type="text" class="edit-title">
                             <p class="title-error"></p>
                         </div>
                         <div class="form-inputs">
                             <label class="label-status" for="form-status">Estado</label>
-                            <select class="form-status">
+                            <select class="edit-status">
                                 <option value="" disabled selected>Selecciona un Estado</option>
                                 <option value="Pendiente">Pendiente</option>
                                 <option value="En progreso">En progreso</option>
@@ -98,16 +118,16 @@
                             </select>
                             <p class="status-error"></p>
                         </div>
-
+        
                         <div class="div-btn">
-                            <button type="submit" class="btn-submit">Agregar</button>
+                            <button type="submit" class="btn-submit">Guardar cambios</button>
                             <p class="form-error"></p>
                         </div>
                     </form>
                 </div>
             </div>
- -->
         </section>
+
     </main>
     <footer></footer>
     <script src="main.js"></script>

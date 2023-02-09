@@ -276,7 +276,7 @@ h2 {
     top: 0;
     opacity: 100%;
    /* pointer-events: none;*/
-    display: flex;
+    display: none;
     justify-content: center;
     align-items: center;
 
@@ -290,7 +290,7 @@ h2 {
     padding: 20px;
     border-radius: 4%;
     position: absolute;
-    display: none;
+    display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;

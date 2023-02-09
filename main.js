@@ -114,28 +114,31 @@ window.addEventListener("load", () => {
         const EditToDo = tareas.find(tarea => tarea.id === Number(event.target.id))
         $editStatus.value = EditToDo.Estado
         $editTitle.value = EditToDo.Titulo
+
       });
     });
   };
 
 
-    // Events MODAL Edit
+  //  ------------ MODAL -------------  //
+
+// Events MODAL Edit
 
     $btnCloseModal.addEventListener("click", () => {
       $containModal.style.display = 'none'
   })
 
-// MODAL Validation
+// MODAL Submit
 
   $formEdit.addEventListener("submit", (event) => {
     event.preventDefault();
 
     $containModal.style.display = 'none'
 
-
-
-   
   })
+
+
+
 
 
   //  ------------ FILTERS -------------  //
@@ -302,5 +305,9 @@ window.addEventListener("load", () => {
     }
   });
 
+
+  console.log(tareas)
+
+  tareas[].Titulo = "hola"
   //estos cierran la funcion window-load
 });

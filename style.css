@@ -12,7 +12,10 @@
 .darkmode,
 .darkmode header,
 .darkmode .create-view,
-.darkmode .main-view {
+.darkmode .main-view,
+.darkmode .modal,
+.darkmode .btn-delete,
+.darkmode .btn-edit {
     background-color: #3d4252;
     color: white;
 
@@ -26,6 +29,11 @@
     background-color: #1a1c23;
     color: white;
 
+}
+
+.darkmode .close-modal {
+    background-color: transparent;
+    color: white;
 }
 
 
@@ -296,4 +304,6 @@ h2 {
     align-self: flex-end;
     font-size: medium;
     font-weight: 600;
+    background-color: transparent;
+   
 }

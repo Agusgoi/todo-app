@@ -306,8 +306,6 @@ window.addEventListener("load", () => {
   });
 
 
-  console.log(tareas)
-
-  tareas[].Titulo = "hola"
+ 
   //estos cierran la funcion window-load
 });

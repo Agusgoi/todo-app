@@ -7,6 +7,7 @@ window.addEventListener("load", () => {
   const $form = $(".form");
   const $formEdit = $(".form-edit");
   let tareas = [];
+  let EditToDo = {};
 
   // List Columns
   const $dateColumn = $(".column-date");
@@ -97,7 +98,6 @@ window.addEventListener("load", () => {
     // Delete
 
     $btnDeleteTarea = document.querySelectorAll(".btn-delete");
-    console.log($btnDeleteTarea);
     $btnDeleteTarea.forEach((button) => {
       button.addEventListener("click", (event) => {
         tareas = tareas.filter((tarea) => tarea.id !== Number(event.target.id));
@@ -111,35 +111,42 @@ window.addEventListener("load", () => {
     $btnEditTarea.forEach((button) => {
       button.addEventListener("click", (event) => {
         $containModal.style.display = "flex";
-        const EditToDo = tareas.find(tarea => tarea.id === Number(event.target.id))
-        $editStatus.value = EditToDo.Estado
-        $editTitle.value = EditToDo.Titulo
+        EditToDo = tareas.find((tarea) => tarea.id === Number(event.target.id));
 
+        $editStatus.value = EditToDo.Estado;
+        $editTitle.value = EditToDo.Titulo;
+        console.log(EditToDo);
       });
     });
+    //no entiendo por que Edit y Delete funcionan solo estando dentro de la funcion Paint. Si los saco no funcionan.
   };
-
 
   //  ------------ MODAL -------------  //
 
-// Events MODAL Edit
+  // Events MODAL - Edit ToDo
 
-    $btnCloseModal.addEventListener("click", () => {
-      $containModal.style.display = 'none'
-  })
+  $btnCloseModal.addEventListener("click", () => {
+    $containModal.style.display = "none";
+  });
 
-// MODAL Submit
+  $editTitle.addEventListener("blur", () => {
+    EditToDo.Titulo = $editTitle.value;
+    console.log("holaaaaaaa");
+    //console.log(EditToDo);
+  });
+
+  $editStatus.addEventListener("blur", () => {
+    EditToDo.Estado = $editStatus.value;
+    //console.log(EditToDo);
+  });
+
+  // MODAL Submit
 
   $formEdit.addEventListener("submit", (event) => {
     event.preventDefault();
-
-    $containModal.style.display = 'none'
-
-  })
-
-
-
-
+    $containModal.style.display = "none";
+    paint(tareas);
+  });
 
   //  ------------ FILTERS -------------  //
 
@@ -277,8 +284,8 @@ window.addEventListener("load", () => {
         elementsForm[i].style.backgroundColor = "none";
       }
     }
-    console.log(errors);
-    console.log(validationErrors);
+    //console.log(errors);
+    //console.log(validationErrors);
     if (!errors && !validationErrors) {
       if (tareas == "") {
         tareas.push({
@@ -286,8 +293,8 @@ window.addEventListener("load", () => {
           FechaCreacion: formatDate,
           Titulo: $title.value,
           Estado: $status.value,
-        }); 
-        console.log(tareas);
+        });
+        // console.log(tareas);
         paint(tareas);
         clearInputs();
       } else {
@@ -305,7 +312,5 @@ window.addEventListener("load", () => {
     }
   });
 
-
- 
   //estos cierran la funcion window-load
 });
